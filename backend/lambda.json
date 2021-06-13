@@ -1,0 +1,19 @@
+{
+  "name": "serverlessRevshellWebsocketHandler-63c57fc",
+  "description": "serverlessRevshell function",
+  "region": "ap-northeast-1",
+  "runtime": "python3.8",
+  "handler": "app.lambda_handler",
+  "role": "arn:aws:iam::746651539150:role/LambdaBasicRole",
+  "ignore": [
+    "circle\\.yml$",
+    "\\.git$",
+    "/.*\\.pyc$"
+  ],
+  "timeout": 30,
+  "memory": 512,
+  "variables": {
+    "CONTROLLER_KEY": "",
+    "API_ENDPOINT_URL": ""
+  }
+}
