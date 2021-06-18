@@ -27,6 +27,7 @@ connection_table = aws.dynamodb.Table(
 
 ws_handler = aws.lambda_.Function(
     f'{APP_NAME}WebsocketHandler',
+    name=f'{APP_NAME}WebsocketHandler',
     role=LAMBDA_ROLE,
     runtime='python3.8',
     handler='app.lambda_handler',
@@ -37,6 +38,7 @@ ws_handler = aws.lambda_.Function(
 
 ws_api = aws.apigatewayv2.Api(
     f'{APP_NAME}WebsocketAPI',
+    name=f'{APP_NAME}WebsocketAPI',
     protocol_type='WEBSOCKET',
     route_selection_expression='$request.body.action',
 )
@@ -75,6 +77,7 @@ default_route = aws.apigatewayv2.Route(
 
 stage = aws.apigatewayv2.Stage(
     f'{APP_NAME}APIStage',
+    name=f'ws',
     api_id=ws_api.id,
     auto_deploy=True,
 )
