@@ -1,4 +1,5 @@
 import argparse
+import datetime
 import json
 import subprocess
 
@@ -7,6 +8,10 @@ import websocket
 
 argparser = argparse.ArgumentParser()
 argparser.add_argument('--endpoint', required=True)
+
+
+def on_open(ws):
+    print(f'{datetime.datetime.now()}: Connected to server.')
 
 
 def on_message(ws, message):
@@ -23,6 +28,7 @@ def on_message(ws, message):
 def main(args):
     ws = websocket.WebSocketApp(
         args.endpoint,
+        on_open=on_open,
         on_message=on_message,
     )
     ws.run_forever()
